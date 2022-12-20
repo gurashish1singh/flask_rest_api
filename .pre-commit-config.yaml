@@ -1,0 +1,44 @@
+#!/bin/bash
+default_stages: [commit]
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev:  v4.3.0
+    hooks:
+    -   id: check-executables-have-shebangs
+        stages: [push]
+    -   id: check-merge-conflict
+    -   id: check-shebang-scripts-are-executable
+        stages: [push]
+    -   id: check-toml
+        stages: [push]
+    -   id: check-yaml
+        stages: [push]
+    -   id: end-of-file-fixer
+        stages: [push]
+    -   id: trailing-whitespace
+        stages: [push]
+-   repo: local
+    hooks:
+    -   id: black
+        name: Running black from local poetry env
+        entry: poetry run black .
+        # Black does not work with language as python
+        language: system
+        types:
+          - python
+    -   id: flake8
+        name: Running flake8 from local poetry env
+        entry: poetry run flake8 .
+        language: system
+        files: ".*.py"
+    -   id: isort
+        name: Running isort from local poetry env
+        entry: poetry run isort .
+        language: system
+        files: ".*.py"
+    -   id: lizard
+        name: Running lizard from local poetry env
+        entry: poetry run lizard
+        # Max 7 arguments allowed, show only warnings, sort by CCN, exclude .venv
+        args: ["--CCN", "8", "-a", "7", "-w", "-s", "cyclomatic_complexity", "-x", ".\\.venv\\*"]
+        language: python

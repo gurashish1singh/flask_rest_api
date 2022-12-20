@@ -1,4 +1,3 @@
-#!/bin/bash
 default_stages: [commit]
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks

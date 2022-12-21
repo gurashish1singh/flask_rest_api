@@ -18,6 +18,7 @@ jinja2 = "2.11.2"
 markupsafe = "1.1.1"
 itsdangerous = "1.1.0"
 werkzeug = "1.0.1"
+python-dotenv = "0.21.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5"
@@ -29,6 +30,10 @@ lizard = "^1.17"
 pytest = "^7.1"
 covdefaults = "^2"
 coverage = "^6.5"
+
+[tool.poetry.group.dev.dependencies]
+flask-testing = "^0.8.1"
+parameterized = "0.8.1"
 
 [tool.black]
 line-length = 100

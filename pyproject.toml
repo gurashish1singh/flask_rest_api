@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "Flask Rest API"
+version = "1.0.0"
+description = "A basic flask rest api with SQLAlchemy as the ORM."
+authors = ["Gurashish Singh <gurashish1singh@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+PyYAML = "^6"
+python-json-logger = "^2"
+flask = "1.1.2"
+flask-restful = "0.3.8"
+flask-sqlalchemy = "2.4.3"
+sqlalchemy = "1.3.18"
+jinja2 = "2.11.2"
+markupsafe = "1.1.1"
+itsdangerous = "1.1.0"
+werkzeug = "1.0.1"
+python-dotenv = "0.21.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^5"
+isort = "^5.5"
+black = "^22.9"
+pre-commit = "^2.20"
+flake8-bugbear = "^22"
+lizard = "^1.17"
+pytest = "^7.1"
+covdefaults = "^2"
+coverage = "^6.5"
+
+[tool.poetry.group.dev.dependencies]
+flask-testing = "^0.8.1"
+parameterized = "0.8.1"
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+add_imports = ["from __future__ import annotations"]
+force_grid_wrap = 2
+multi_line_output = 3
+include_trailing_comma = true
+quiet = true
+
+[tool.coverage.run]
+plugins = ["covdefaults"]
+
+[tool.coverage.report]
+fail_under = 95
+omit = [
+    "logger.py"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

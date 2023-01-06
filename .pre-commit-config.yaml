@@ -41,3 +41,20 @@ repos:
         # Max 7 arguments allowed, show only warnings, sort by CCN, exclude .venv
         args: ["--CCN", "8", "-a", "7", "-w", "-s", "cyclomatic_complexity", "-x", ".\\.venv\\*"]
         language: python
+    -   id: pytest
+        name: Running tests using pytest from local poetry env
+        entry: poetry run coverage run -m pytest
+        args: ["-x"]
+        language: system
+        types:
+          - python
+        pass_filenames: false
+        stages: [push]
+    -   id: coverage
+        name: Generating coverage report
+        entry: poetry run coverage report -m
+        language: system
+        types:
+          - python
+        pass_filenames: false
+        stages: [push]

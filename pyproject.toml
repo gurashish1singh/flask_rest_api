@@ -50,6 +50,9 @@ plugins = ["covdefaults"]
 
 [tool.coverage.report]
 fail_under = 95
+omit = [
+    "logger.py"
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
